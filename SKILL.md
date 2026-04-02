@@ -5,8 +5,9 @@ description: >
   implementing business logic, parsers, auth, payment processing, rate limiters, data
   validation, or any code where correctness matters more than speed. Also use when the
   user says "make this bulletproof", "handle all edge cases", "this needs to be correct",
-  or asks for careful/rigorous implementation — even if they don't explicitly mention
-  "edge cases" or "failure modes".
+  or asks for careful/rigorous implementation. Supports "dry run" mode to review
+  analysis before any code is written. Activates even if the user doesn't explicitly
+  mention "edge cases" or "failure modes".
 ---
 
 # Deliberate Coder
@@ -84,6 +85,12 @@ For each implementation request, produce:
 ## What This Doesn't Handle
 - [explicit boundaries of the solution]
 ```
+
+## Dry Run Mode
+
+When the user says "dry run", "just analyze", or "don't write code yet" — produce only the Assumptions, Edge Cases, Failure Modes, and "What This Doesn't Handle" sections. Stop before writing any implementation. This lets the user review and correct the analysis before code is generated.
+
+Resume with implementation only when the user confirms the analysis or says "go ahead."
 
 ## Self-Validation
 
