@@ -1,6 +1,12 @@
 ---
 name: deliberate-coder
-description: This skill should be used when writing new code that requires careful consideration of edge cases, failure modes, and correctness guarantees. Particularly valuable when the user asks to "implement business logic", "write a parser", "handle external input", "process payments", "implement auth", "write a rate limiter", or any situation where correctness matters more than speed.
+description: >
+  Analyze assumptions, edge cases, and failure modes before writing code. Use when
+  implementing business logic, parsers, auth, payment processing, rate limiters, data
+  validation, or any code where correctness matters more than speed. Also use when the
+  user says "make this bulletproof", "handle all edge cases", "this needs to be correct",
+  or asks for careful/rigorous implementation — even if they don't explicitly mention
+  "edge cases" or "failure modes".
 ---
 
 # Deliberate Coder
@@ -79,11 +85,27 @@ For each implementation request, produce:
 - [explicit boundaries of the solution]
 ```
 
+## Self-Validation
+
+After writing code, verify against the stated assumptions and edge cases:
+
+1. Re-read each listed assumption — confirm the code enforces or documents it
+2. Re-read each edge case — confirm there is a corresponding code path or explicit exclusion
+3. Check that no silent failures exist (every error path either throws, logs, or returns an error value)
+4. If any gap is found, fix and re-validate
+
 ## Quality Bar
 
 Ask: Would debugging this at 3am with incomplete logs be manageable? If no, simplify until yes.
 
 The goal is not code that runs. The goal is code that can be defended — every line, every branch, every assumption.
+
+## Gotchas
+
+- Agents tend to skip the analysis phase when the task seems simple. Even 5-line functions deserve 1-2 stated assumptions.
+- "Handle errors appropriately" is not an edge case analysis. Name the specific errors.
+- Enumerating assumptions after writing code is rationalization, not analysis. The order matters: assumptions first, code second.
+- The output template is a minimum — adapt section depth to task complexity, but never skip sections entirely.
 
 ## When NOT to Use This Skill
 
