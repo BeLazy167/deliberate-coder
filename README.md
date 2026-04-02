@@ -1,5 +1,9 @@
 # deliberate-coder
 
+```bash
+npx skills add BeLazy167/deliberate-coder
+```
+
 An [agent skill](https://agentskills.io) that forces AI coding agents to analyze assumptions, edge cases, and failure modes **before** writing code.
 
 ## What it does
